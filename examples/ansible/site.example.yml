@@ -1,0 +1,18 @@
+---
+# Illustrative, non-production example. Run with --check --diff first.
+- name: Validate a small base package set
+  hosts: example_targets
+  become: true
+  gather_facts: true
+  tasks:
+    - name: Install a documented package
+      ansible.builtin.package:
+        name: ca-certificates
+        state: present
+      tags: [baseline]
+
+    - name: Report the observed platform
+      ansible.builtin.debug:
+        msg:
+          - "OS family: {{ ansible_facts.os_family }}"
+          - "Architecture: {{ ansible_facts.architecture }}"

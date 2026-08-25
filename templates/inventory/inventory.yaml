@@ -1,0 +1,34 @@
+# Sanitized inventory template. Do not add secrets, private addresses, serials,
+# MAC addresses, or raw command output.
+observed_at: "YYYY-MM-DDThh:mm:ssZ"
+confidence: verified
+platform:
+  purpose: "home platform"
+  permission_mode: attended
+hosts:
+  - name: role-oriented-label
+    role: base-host | home-assistant | operations | applications | ai-worker
+    os: ""
+    cpu: ""
+    memory_gib: 0
+    storage:
+      - role: system | durable-data | replaceable-data | backup-cache
+        capacity_gib: 0
+        free_gib: 0
+        backup_class: rebuildable | durable | recovery-material | replaceable
+    gpu: none
+    network: wired | wireless | mixed | unknown
+    power: ac | battery-ups | ups | unknown
+    services: []
+services:
+  - name: home-assistant
+    owner: home-assistant
+    desired_state: path/to/config
+    runtime_interface: supported-api-or-mcp
+    backup_class: durable
+    monitor: true
+devices:
+  protocols: [zigbee, thread, matter, mqtt, esphome]
+  areas: []
+  assist_exposure_policy: "human-useful controls and status only"
+evidence_gaps: []

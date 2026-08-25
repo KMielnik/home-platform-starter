@@ -1,0 +1,18 @@
+# Illustrative only. Do not deploy unchanged.
+# Validate with: docker compose -f compose.example.yaml config
+# Loopback-only by default: the example is reachable from this host, not from
+# the LAN. Do not widen the bind to a broad interface without reviewing
+# authentication, firewall rules, TLS, and the data exposed by the service.
+services:
+  example-status-page:
+    image: nginx:1.27.1-alpine
+    profiles: [example]
+    read_only: true
+    restart: "no"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    ports:
+      - "127.0.0.1:${EXAMPLE_PORT:-18080}:80"
+    tmpfs:
+      - /var/cache/nginx:rw,noexec,nosuid,size=16m
+      - /var/run:rw,noexec,nosuid,size=1m

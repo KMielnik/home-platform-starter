@@ -1,0 +1,18 @@
+# Local secrets and generated state — never commit these.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.age
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.bak
+/backups/
+inventory/observed/
+staging/
+__pycache__/
+.pytest_cache/

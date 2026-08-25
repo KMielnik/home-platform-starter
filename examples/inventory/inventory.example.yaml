@@ -1,0 +1,25 @@
+# Safe example: labels and values are intentionally generic and incomplete.
+observed_at: "2026-01-15T12:00:00Z"
+hosts:
+  - name: base-host
+    role: base-host
+    os: "hypervisor or Linux"
+    cpu: "mobile or desktop CPU"
+    memory_gib: 16
+    storage:
+      - role: system
+        capacity_gib: 256
+        free_gib: 120
+        backup_class: rebuildable
+    gpu: integrated
+    network: mixed
+    power: ac
+services:
+  - name: household-control
+    owner: home-assistant
+    backup_class: durable
+    monitor: true
+  - name: operations
+    owner: operations
+    backup_class: recovery-material
+    monitor: true
